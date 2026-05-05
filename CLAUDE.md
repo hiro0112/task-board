@@ -50,10 +50,52 @@ git push origin <ブランチ名>
 - `main` ブランチへの直接プッシュ禁止
 - フックのスキップ (`--no-verify`) は禁止
 
-## 開発環境セットアップ
+## デプロイ先
 
-（プロジェクト初期化時に追記すること）
+- **リポジトリ:** https://github.com/hiro0112/task-board
+- **公開URL:** https://hiro0112.github.io/task-board/
+- **デプロイ方法:** `main` ブランチへのプッシュで GitHub Actions が自動実行
 
 ## 技術スタック
 
-（決定次第追記すること）
+| カテゴリ | 採用技術 |
+|---|---|
+| UIライブラリ | React 18 |
+| ビルドツール | Vite 6 |
+| 言語 | JavaScript (JSX) |
+| スタイリング | Plain CSS (CSS Modules なし) |
+| 状態管理 | React useState / useEffect |
+| 永続化 | localStorage |
+| ホスティング | GitHub Pages |
+| CI/CD | GitHub Actions |
+
+## コンポーネント命名規約
+
+### ファイル名
+- コンポーネントファイルは **PascalCase** + `.jsx` 拡張子
+  - 例: `TaskItem.jsx`, `TaskList.jsx`, `AddTaskForm.jsx`
+- ユーティリティ・フック・定数は **camelCase** + `.js` 拡張子
+  - 例: `useLocalStorage.js`, `taskUtils.js`
+
+### コンポーネント名
+- ファイル名と一致させる（default export）
+  - 例: `export default function TaskItem() {}`
+
+### CSS クラス名
+- **kebab-case** を使用
+  - 例: `.task-item`, `.add-btn`, `.input-row`
+- 状態を表す修飾クラスは短い形容詞
+  - 例: `.done`, `.active`, `.disabled`
+
+### 変数・関数名
+- 変数・関数: **camelCase**
+- イベントハンドラ: `handle` プレフィックス — 例: `handleKeyDown`, `handleSubmit`
+- 状態更新関数: 動詞 + 対象 — 例: `addTask`, `toggleTask`, `deleteTask`
+
+## 開発環境セットアップ
+
+```bash
+npm install   # 依存関係インストール
+npm run dev   # 開発サーバー起動 → http://localhost:5173/
+npm run build # 本番ビルド
+```
